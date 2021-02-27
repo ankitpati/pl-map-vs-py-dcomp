@@ -129,8 +129,7 @@ my @data = (
 
 sub benchmark {
     my %processed = map {
-        my ($k, $am, $mp, $bp) = @$_;
-        $k => $bp && $mp ? ($bp - $mp) / $am : undef;
+        $_->[0] => $_->[3] && $_->[2] ? ($_->[3] - $_->[2]) / $_->[1] : undef;
     } @data;
     return %processed;
 }
