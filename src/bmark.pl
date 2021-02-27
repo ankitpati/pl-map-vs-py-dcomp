@@ -140,6 +140,6 @@ print ((timeit 10000, \&benchmark)->real, "\n");
 # Verify correctness, and compare with other benchmarked code.
 my %ret = benchmark;
 foreach my $k (sort keys %ret) {
-    my $v = $ret{$k} // 'N/A';
-    print "$k,$v\n";
+    my $v = $ret{$k};
+    print "$k,", $v ? sprintf '%.7f', $v : 'N/A', "\n";
 }
