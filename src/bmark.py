@@ -139,5 +139,4 @@ print(timeit(benchmark, number=10000))
 # Verify correctness, and compare with other benchmarked code.
 ret = benchmark()
 for k, v in sorted(ret.items()):
-    v = v if v else 'N/A'
-    print(str(k) + ',' + (v if isinstance(v, str) else '{:.7f}'.format(v)))
+    print(str(k) + ',' + ('{:.7f}'.format(v) if v else 'N/A'))
