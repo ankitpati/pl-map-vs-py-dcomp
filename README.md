@@ -16,7 +16,22 @@ Python wins by taking about half the time Perl takes.
 
 ### Stats for Nerds
 
-Data to be collected.
+#### Perl
+
+|||
+|-|-|
+| Regular Hash            | 0.452912092208862s |
+| Keys Assignment         | 0.452517986297607s |
+| Numeric Regular Hash    | 2.83940291404724s  |
+| Numeric Keys Assignment | 2.83703708648682s  |
+| Numeric No Hash         | 0.647165060043335s |
+
+#### Python
+
+|||
+|-|-|
+| Regular Hash         | 0.23767730799954734s |
+| Numeric Regular Hash | 0.8262694709992502s  |
 
 ## Why?
 
