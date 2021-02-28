@@ -27,11 +27,11 @@ def numeric_regular_hash():
 class TestCorrectness(TestCase):
     def test_regular_hash(self):
         self.maxDiff = None
-        self.assertDictEqual({key: round(value, 7) if value else None for key, value in regular_hash().items()}, processed_data, 'Regular Hash is correct')
+        self.assertEqual({key: round(value, 7) if value else None for key, value in regular_hash().items()}, processed_data, 'Regular Hash is correct')
 
     def test_numeric_regular_hash(self):
         self.maxDiff = None
-        self.assertDictEqual(numeric_regular_hash(), numeric_processed_data, 'Numeric Regular Hash is correct')
+        self.assertEqual(numeric_regular_hash(), numeric_processed_data, 'Numeric Regular Hash is correct')
 
 
 def main():
@@ -57,8 +57,8 @@ def main():
 
     # Total, wallclock time for lots of runs.
     print(
-        "Regular Hash:\t\t", timeit(regular_hash, number=timed_iteration), "\n",
-        "Numeric Regular Hash:\t", timeit(numeric_regular_hash, number=timed_iteration), "\n",
+        "Regular Hash:\t\t", timeit(regular_hash, number=timed_iteration), "s\n",
+        "Numeric Regular Hash:\t", timeit(numeric_regular_hash, number=timed_iteration), "s\n",
         sep=''
     )
 
