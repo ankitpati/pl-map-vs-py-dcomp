@@ -162,22 +162,26 @@ sub numeric_no_hash {
     return map { $_ => $_ * $_ } 0..1000;
 }
 
-# Total, wallclock time for lots of runs.
-diag
-    "Regular Hash:\t\t\t", (timeit 10000, \&regular_hash)->real, "\n",
-    "Keys Assignment:\t\t", (timeit 10000, \&keys_assignment)->real, "\n",
-    "Numeric Regular Hash:\t\t", (timeit 10000, \&numeric_regular_hash)->real, "\n",
-    "Numeric Keys Assignment:\t", (timeit 10000, \&numeric_keys_assignment)->real, "\n",
-    "Numeric No Hash:\t\t", (timeit 10000, \&numeric_no_hash)->real, "\n",
-;
+sub main {
+    # Total, wallclock time for lots of runs.
+    diag
+        "Regular Hash:\t\t\t", (timeit 10000, \&regular_hash)->real, "\n",
+        "Keys Assignment:\t\t", (timeit 10000, \&keys_assignment)->real, "\n",
+        "Numeric Regular Hash:\t\t", (timeit 10000, \&numeric_regular_hash)->real, "\n",
+        "Numeric Keys Assignment:\t", (timeit 10000, \&numeric_keys_assignment)->real, "\n",
+        "Numeric No Hash:\t\t", (timeit 10000, \&numeric_no_hash)->real, "\n",
+    ;
 
-# Verify correctness, and compare with other benchmarked code.
-my %regular_hash = regular_hash;
-my %keys_assignment = keys_assignment;
-my %numeric_regular_hash = numeric_regular_hash;
-my %numeric_keys_assignment = numeric_keys_assignment;
-my %numeric_no_hash = numeric_no_hash;
+    # Verify correctness, and compare with other benchmarked code.
+    my %regular_hash_ret = regular_hash;
+    my %keys_assignment_ret = keys_assignment;
+    my %numeric_regular_hash_ret = numeric_regular_hash;
+    my %numeric_keys_assignment_ret = numeric_keys_assignment;
+    my %numeric_no_hash_ret = numeric_no_hash;
 
-is_deeply \%regular_hash, \%keys_assignment, '“Regular Hash” and “Keys Assignment” match';
-is_deeply \%numeric_regular_hash, \%numeric_keys_assignment, '“Numeric Regular Hash” and “Numeric Keys Assignment” match';
-is_deeply \%numeric_regular_hash, \%numeric_no_hash, '“Numeric Regular Hash” and “Numeric No Hash” match';
+    is_deeply \%regular_hash_ret, \%keys_assignment_ret, '“Regular Hash” and “Keys Assignment” match';
+    is_deeply \%numeric_regular_hash_ret, \%numeric_keys_assignment_ret, '“Numeric Regular Hash” and “Numeric Keys Assignment” match';
+    is_deeply \%numeric_regular_hash_ret, \%numeric_no_hash_ret, '“Numeric Regular Hash” and “Numeric No Hash” match';
+}
+
+main unless caller;
