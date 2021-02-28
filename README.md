@@ -38,3 +38,13 @@ Python wins by taking about half the time Perl takes.
 [This Twitter thread](https://twitter.com/grhmc/status/1365462790425751552 "by
 Graham Christensen") sparked a discussion leading to this benchmarking code
 being written.
+
+## How?
+
+```sh
+git clone https://gitlab.com/ankitpati/pl-map-vs-py-dcomp.git
+cd pl-map-vs-py-dcomp/
+./run.sh
+```
+
+For tweaking things, consult the source!
