@@ -88,7 +88,7 @@ def main():
     suite = TestSuite()
     suite.addTest(TestCorrectness("test_regular_hash"))
     suite.addTest(TestCorrectness("test_numeric_regular_hash"))
-    TextTestRunner().run(suite)
+    TextTestRunner(verbosity=2).run(suite)
 
 
 if __name__ == "__main__":
