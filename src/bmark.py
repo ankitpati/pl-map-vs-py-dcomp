@@ -25,17 +25,13 @@ def numeric_regular_hash():
 
 
 class TestCorrectness(TestCase):
-    def runTest(self):
-        self.maxDiff = None
-        self.test_regular_hash()
-        self.test_numeric_regular_hash()
-
     def test_regular_hash(self):
+        self.maxDiff = None
         self.assertDictEqual({key: round(value, 7) if value else None for key, value in regular_hash().items()}, processed_data, 'Regular Hash is correct')
 
     def test_numeric_regular_hash(self):
+        self.maxDiff = None
         self.assertDictEqual(numeric_regular_hash(), numeric_processed_data, 'Numeric Regular Hash is correct')
-        pass
 
 
 def main():
@@ -68,7 +64,8 @@ def main():
 
     # Verify correctness, and compare with other benchmarked code.
     suite = TestSuite()
-    suite.addTest(TestCorrectness())
+    suite.addTest(TestCorrectness('test_regular_hash'))
+    suite.addTest(TestCorrectness('test_numeric_regular_hash'))
     TextTestRunner().run(suite)
 
 
