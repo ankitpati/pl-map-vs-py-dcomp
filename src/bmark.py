@@ -126,17 +126,38 @@ data = [
 ]
 
 
-def benchmark():
+def regular_hash():
     '''Code being benchmarked'''
     processed = {x[0]: (x[3] - x[2]) / x[1] if x[3] and x[2] else None
                  for x in data}
     return processed
 
 
-# Total, wallclock time for lots of runs.
-print(timeit(benchmark, number=10000))
+def numeric_regular_hash():
+    '''Code being benchmarked'''
+    processed = {x: x * x for x in range(1001)}
+    return processed
 
-# Verify correctness, and compare with other benchmarked code.
-ret = benchmark()
-for k, v in sorted(ret.items()):
-    print(str(k) + ',' + ('{:.7f}'.format(v) if v else 'N/A'))
+
+def main():
+    '''Entry point'''
+
+    # Total, wallclock time for lots of runs.
+    print(
+        "Regular Hash:\t\t", timeit(regular_hash, number=10000), "\n",
+        "Numeric Regular Hash:\t", timeit(regular_hash, number=10000), "\n",
+        sep=''
+    )
+
+    # Verify correctness, and compare with other benchmarked code.
+    regular_hash_ret = regular_hash()
+    for key, value in sorted(regular_hash_ret.items()):
+        print(str(key) + ',' + ('{:.7f}'.format(value) if value else 'N/A'))
+
+    numeric_regular_hash_ret = numeric_regular_hash()
+    for key, value in sorted(numeric_regular_hash_ret.items()):
+        print(str(key) + ',' + str(value))
+
+
+if __name__ == '__main__':
+    main()
