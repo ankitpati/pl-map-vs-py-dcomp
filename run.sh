@@ -16,3 +16,6 @@ pypy3 "$mydir/src/bmark.py" "${BMARK_OPTS[@]}"
 echo
 echo 'Perl'
 "$mydir/src/bmark.pl" "${BMARK_OPTS[@]}"
+echo
+echo 'Perl with Loops (not `map`)'
+"$mydir/src/bmark-loops.pl" "${BMARK_OPTS[@]}"
